@@ -1,7 +1,14 @@
-function getText(e) {
-    var t = "http://localhost:3000/script/live/" + e, n = "Blank", r = new XMLHttpRequest;
-    return r.open("GET", t, !1), r.setRequestHeader("Content-Type", "text/plain"), r.send(), n = 200 == r.status ? JSON.parse(r.responseText).content : "error"
-}
+/**
+ * Web components polyfills - Support for non Web Component browsers
+ * @license
+ * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ * @version 0.6.1
+ */
 window.WebComponents = window.WebComponents || {}, function (e) {
     var t = e.flags || {}, n = "webcomponents.js", r = document.querySelector('script[src*="' + n + '"]');
     if (!t.noOpts) {
@@ -4097,8 +4104,3 @@ window.WebComponents = window.WebComponents || {}, function (e) {
 }(window.WebComponents), function (e) {
     window.Platform = e
 }(window.WebComponents);
-var XFooProto = Object.create(HTMLElement.prototype);
-XFooProto.createdCallback = function () {
-    this.innerHTML = getText(this.dataset.id, this.dataset.user, this.dataset.lang)
-};
-var XFoo = document.registerElement("j-cms", {prototype: XFooProto});
