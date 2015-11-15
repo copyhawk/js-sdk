@@ -6,11 +6,11 @@ require 'copy_hawk/version'
 Gem::Specification.new do |spec|
   spec.name          = "copy_hawk"
   spec.version       = CopyHawk::VERSION
-  spec.authors       = ["jonatanalava"]
-  spec.email         = ["jalava@earlyshares.com"]
+  spec.authors       = ["copyhawk"]
+  spec.email         = ["info@copyhawk.co"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{This is a pure Ruby client to access copyhawk content on your Ruby applications}
+  spec.description   = %q{This client has the core implementation needed to use copyhawk inside you Ruby app. The Rails client depends on this Gem.}
   spec.homepage      = "https://www.copyhawk.co"
   spec.license       = "MIT"
 
