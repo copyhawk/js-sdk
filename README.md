@@ -23,15 +23,15 @@ Or install it yourself as:
 Three environment variables are required for this gem to work correctly. COPYHAWK_SITE_TOKEN,COPYHAWK_ACCOUNT_TOKEN, COPYHAWK_DEFAULT_LANGUAGE. Your site token and you account token can be found inside your site's dashboard on [copyhawk's](https://www.copyhawk.co) site.
 In order to use the Gem simply get an Eyas from the copy_hawk module. After getting an Eyas, you will have 3 interfaces you can use. They are:
 
-`getPreviewCopy(label, language)`
+`preview_copy(label, language)`
 Get Preview Copy fetches Staged content.
 Label is your script's label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
 
-`getSingleCopy(label, language)`
+`single_copy(label, language)`
 Get Single Copy fetches live content, one label at a time.
 Label is your script's label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
 
-`getMultiCopy(labels, language)`
+`multi_copy(labels, language)`
 Get Multi Copy fetches live content by a list of labels in one single request. If any labels in the list are not Live or defined, the API will return a 404.
 Labels are your scripts' label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
 

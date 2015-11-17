@@ -3,7 +3,7 @@ require "copy_hawk/hawk_api"
 
 module CopyHawk
 
-  def self.getEyas
+  def self.eyas
     Eyas.new([])
   end
 
@@ -15,12 +15,12 @@ module CopyHawk
       @hawkApi        = HawkApi.new
     end
 
-    def getPreviewCopy(label, lang=@defaultLang)
+    def preview_copy(label, lang=@defaultLang)
       #xhttp.open("GET", "//localhost:3000/api/p/staging." + @token + "/" + label + "?lang="+lang+"&cache="+cacheKey, true);
       #xhttp.setRequestHeader("Content-Type" => "text/plain");
       #xhttp.send();
       begin
-        response = @hawkApi.getSingleStagingScript(@token, @key, label, lang)
+        response = @hawkApi.single_staging_script(@token, @key, label, lang)
         # HTTParty.get("https://www.google.com:3000/api/staging/#{@token}/#{label}?lang=#{lang}", headers: { 'Authorization' => @key, "Content-Type" => "text/html" })
         process_response(response, label, lang)
       rescue HTTParty::Error, Net::ReadTimeout, SocketError, JSON::ParserError, Errno::ECONNREFUSED => e
@@ -31,9 +31,9 @@ module CopyHawk
       response.body
     end
 
-    def getSingleCopy(label, lang=@defaultLang)
+    def single_copy(label, lang=@defaultLang)
       begin
-        response = @hawkApi.getSingleLiveScript(@token, @key, label, lang)
+        response = @hawkApi.single_live_script(@token, @key, label, lang)
         process_response(response, label, lang)
       rescue HTTParty::Error, Net::ReadTimeout, SocketError, JSON::ParserError, Errno::ECONNREFUSED => e
         # Return a blank for any errors - 404 should return a specific error to show script is missing for that label & language
@@ -43,9 +43,9 @@ module CopyHawk
       response.body
     end
 
-    def getMultiCopy(labels, lang=@defaultLang)
+    def multi_copy(labels, lang=@defaultLang)
       begin
-        response = @hawkApi.getMultiLiveScripts(@token, @key, labels, lang)
+        response = @hawkApi.multi_live_scripts(@token, @key, labels, lang)
         process_response(response, labels, lang)
       rescue HTTParty::Error => e
         response = Object.new
