@@ -10,7 +10,6 @@ module CopyHawk
   class Eyas
     def initialize(args)
       @token          = ENV["COPYHAWK_SITE_TOKEN"]
-      @key            = ENV["COPYHAWK_ACCOUNT_TOKEN"]
       @defaultLang    = ENV["COPYHAWK_DEFAULT_LANGUAGE"]
       @hawkApi        = HawkApi.new
     end
@@ -20,8 +19,8 @@ module CopyHawk
       #xhttp.setRequestHeader("Content-Type" => "text/plain");
       #xhttp.send();
       begin
-        response = @hawkApi.single_staging_script(@token, @key, label, lang)
-        # HTTParty.get("https://www.google.com:3000/api/staging/#{@token}/#{label}?lang=#{lang}", headers: { 'Authorization' => @key, "Content-Type" => "text/html" })
+        response = @hawkApi.single_staging_script(@token, label, lang)
+        # HTTParty.get("https://www.google.com:3000/api/staging/#{@token}/#{label}?lang=#{lang}", headers: { "Content-Type" => "text/html" })
         process_response(response, label, lang)
       rescue HTTParty::Error, Net::ReadTimeout, SocketError, JSON::ParserError, Errno::ECONNREFUSED => e
         # Return a blank for any errors - 404 should return a specific error to show script is missing for that label & language
@@ -33,7 +32,7 @@ module CopyHawk
 
     def single_copy(label, lang=@defaultLang)
       begin
-        response = @hawkApi.single_live_script(@token, @key, label, lang)
+        response = @hawkApi.single_live_script(@token, label, lang)
         process_response(response, label, lang)
       rescue HTTParty::Error, Net::ReadTimeout, SocketError, JSON::ParserError, Errno::ECONNREFUSED => e
         # Return a blank for any errors - 404 should return a specific error to show script is missing for that label & language
@@ -45,7 +44,7 @@ module CopyHawk
 
     def multi_copy(labels, lang=@defaultLang)
       begin
-        response = @hawkApi.multi_live_scripts(@token, @key, labels, lang)
+        response = @hawkApi.multi_live_scripts(@token, labels, lang)
         process_response(response, labels, lang)
       rescue HTTParty::Error => e
         response = Object.new
