@@ -1,49 +1,38 @@
-# CopyHawk
+# CopyHawk JS SDK
 
-Copyhawk Gem allows you to access all your Copyhawk content programmatically inside any Ruby application.
+Copyhawk JS SDK allows you to access all your Copyhawk content programmatically inside any HTML site.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+You need to follow 3 simple steps to get Copyhawk running on your site:
 
-```ruby
-gem 'copy_hawk'
-```
+1. Add the js scripts to your site
 
-And then execute:
+    eyas.js
+    polyfill.js (only required when older browsers need to be supported)
 
-    $ bundle
+2. Add the init tag to your site
 
-Or install it yourself as:
+    <c-hawk-init data-site-token="" data-default-language="" data-supported-languages="" data-environment=""></c-hawk-init>
 
-    $ gem install copy_hawk
+3. Add your script tags as your create them on Copyhawk
+
+    <c-hawk data-label=""></c-hawk>
 
 ## Usage
 
-Three environment variables are required for this gem to work correctly. COPYHAWK_SITE_TOKEN,COPYHAWK_ACCOUNT_TOKEN, COPYHAWK_DEFAULT_LANGUAGE. Your site token and you account token can be found inside your site's dashboard on [copyhawk's](https://www.copyhawk.co) site.
-In order to use the Gem simply get an Eyas from the copy_hawk module. After getting an Eyas, you will have 3 interfaces you can use. They are:
+All tokens required can be found within your Copyhawk account online. Go to [copyhawk's](https://app.copyhawk.co) site.
 
-`preview_copy(label, language)`
-Get Preview Copy fetches Staged content.
-Label is your script's label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
+Usage is as simple as the three steps listed on section 1.
 
-`single_copy(label, language)`
-Get Single Copy fetches live content, one label at a time.
-Label is your script's label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
+Advanced features include staging/preview mode.
 
-`multi_copy(labels, language)`
-Get Multi Copy fetches live content by a list of labels in one single request. If any labels in the list are not Live or defined, the API will return a 404.
-Labels are your scripts' label and language is the specific language you require. Language is optional and every request will default to your Default Language in case its not provided on every request.
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+`data-environment`
+Using the preview data-environment, Copyhawk fetches Staged content instead of live content.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/copyhawk/ruby-sdk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/copyhawk/js-sdk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
