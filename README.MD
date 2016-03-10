@@ -9,6 +9,7 @@ You need to follow 3 simple steps to get Copyhawk running on your site:
 1. Add the js scripts to your site
 
     eyas.js
+    
     polyfill.js (only required when older browsers need to be supported)
 
 2. Add the init tag to your site
