@@ -30,7 +30,7 @@ function getPreviewText(token, label, lang, cacheKey, element) {
       element.innerHTML = getDefault(label);
     }
   }
-  xhttp.open("GET", "//localhost:3000/api/p/staging." + token + "/" + label + "?lang="+lang+"&cache="+cacheKey, true);
+  xhttp.open("GET", "//app.copyhawk.co/api/p/staging." + token + "/" + label + "?lang="+lang+"&cache="+cacheKey, true);
   xhttp.setRequestHeader("Content-Type", "text/plain");
   xhttp.send();
 }
@@ -44,7 +44,7 @@ function getLiveText(token, label, lang, cacheKey, element) {
       element.innerHTML = getDefault(label);
     }
   }
-  xhttp.open("GET", "//localhost:3000/api/" + token + "/" + label + "?lang="+lang+"&cache="+cacheKey, true);
+  xhttp.open("GET", "//app.copyhawk.co/api/" + token + "/" + label + "?lang="+lang+"&cache="+cacheKey, true);
   xhttp.setRequestHeader("Content-Type", "text/plain");
   xhttp.send();
 }
